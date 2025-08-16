@@ -1,6 +1,4 @@
-# 🎯 Dashboard de Accesibilidad Web
-
-## 📋 Descripción
+# 📋 Descripción
 
 Este repositorio contiene una colección de proyectos de ejemplo que utilizo y comparto en los **webinars y workshops** que realizo . 
 
