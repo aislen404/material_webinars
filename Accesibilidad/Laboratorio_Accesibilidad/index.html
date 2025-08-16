@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratorio de Accesibilidad — Dashboard (v2)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header class="app-header" role="banner">
+  <div>
+    <h1>Laboratorio de Accesibilidad</h1>
+    <p class="muted">Edita, valida, compara y genera prompts para IA</p>
+  </div>
+  <div class="header-actions">
+    <button id="themeToggle" class="btn">🌙 Tema</button>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Secciones del dashboard">
+  <button class="tab active" role="tab" aria-selected="true" aria-controls="pane-basic" id="tab-basic" tabindex="0">Chequeos básicos</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="pane-ia" id="tab-ia" tabindex="-1">Panel IA (prompt)</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="pane-compare" id="tab-compare" tabindex="-1">Comparar ejemplos</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="pane-examples" id="tab-examples" tabindex="-1">Ejemplos rápidos</button>
+</nav>
+
+<main id="main">
+  <!-- Pane 1: Chequeos básicos -->
+  <section id="pane-basic" class="pane active" role="tabpanel" aria-labelledby="tab-basic">
+    <div class="grid two">
+      <div class="card">
+        <h2>Editor</h2>
+        <div class="editor">
+          <label for="htmlInput"><strong>HTML</strong></label>
+          <textarea id="htmlInput" spellcheck="false" placeholder="Pega aquí tu HTML…"></textarea>
+        </div>
+        <div class="editor">
+          <label for="cssInput"><strong>CSS</strong></label>
+          <textarea id="cssInput" spellcheck="false" placeholder="Pega aquí tu CSS…"></textarea>
+        </div>
+        <div class="row">
+          <button id="btnAnalyze" class="btn primary">Analizar</button>
+          <button id="btnExport" class="btn">Exportar informe (HTML)</button>
+          <button id="btnExportJSON" class="btn">Exportar informe (JSON)</button>
+          <button id="btnReset" class="btn ghost">Limpiar</button>
+        </div>
+
+        <div class="card small">
+          <h3>Calculadora de contraste</h3>
+          <div class="row wrap">
+            <label>Texto: <input id="colorText" type="text" placeholder="#111111"></label>
+            <label>Fondo: <input id="colorBg" type="text" placeholder="#ffffff"></label>
+            <button id="btnContrast" class="btn">Calcular</button>
+          </div>
+          <div id="contrastResult" class="muted"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="split">
+          <div>
+            <h2>Resultados</h2>
+            <div id="issues" class="issues" aria-live="polite"></div>
+          </div>
+          <div>
+            <div class="flex-between">
+              <h2>Previsualización</h2>
+              <label for="simulator" class="muted">Simulador:
+                <select id="simulator">
+                  <option value="none">Sin filtro</option>
+                  <option value="protanopia">Protanopia</option>
+                  <option value="deuteranopia">Deuteranopia</option>
+                  <option value="tritanopia">Tritanopia</option>
+                  <option value="blur">Visión borrosa</option>
+                  <option value="highcontrast">Alto contraste</option>
+                </select>
+              </label>
+            </div>
+            <iframe id="preview" title="Vista previa del HTML"></iframe>
+            <div class="focusmap">
+              <h3>Mapa de foco estimado</h3>
+              <ol id="focusList"></ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pane 2: IA (prompt) -->
+  <section id="pane-ia" class="pane" role="tabpanel" aria-labelledby="tab-ia">
+    <div class="grid two">
+      <div class="card">
+        <h2>Generar prompt para IA</h2>
+        <p class="muted">Crea un prompt WCAG 2.2 AA a partir del HTML/CSS del panel anterior.</p>
+        <div class="row">
+          <button id="btnGenPrompt" class="btn primary">Generar Prompt</button>
+          <button id="btnCopyPrompt" class="btn">Copiar</button>
+          <button id="btnDownloadPrompt" class="btn">Descargar .txt</button>
+        </div>
+        <pre id="promptBox" class="prompt"></pre>
+      </div>
+      <div class="card">
+        <h2>Guía rápida</h2>
+        <ul>
+          <li>Incluye el código relevante (HTML/CSS/JS).</li>
+          <li>Pide hallazgos por principio <strong>POUR</strong> y criterio <strong>WCAG 2.2</strong>.</li>
+          <li>Solicita <em>impacto</em>, <em>correcciones</em>, <em>prioridad</em> y <em>pruebas</em>.</li>
+          <li>Verifica las respuestas con WAVE/Insights/Lighthouse.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pane 3: Comparar ejemplos -->
+  <section id="pane-compare" class="pane" role="tabpanel" aria-labelledby="tab-compare">
+    <div class="card">
+      <h2>Comparador lado a lado</h2>
+      <div class="row">
+        <label>Izquierda:
+          <select id="selLeft">
+            <option value="ejemplo_bueno.html">ejemplo_bueno.html</option>
+            <option value="ejemplo_accesible.html">ejemplo_accesible.html</option>
+            <option value="ejemplo_malo.html">ejemplo_malo.html</option>
+            <option value="ejemplo_inaccesible.html">ejemplo_inaccesible.html</option>
+            <option value="ejemplo.html">ejemplo.html</option>
+          </select>
+        </label>
+        <label>Derecha:
+          <select id="selRight">
+            <option value="ejemplo_inaccesible.html">ejemplo_inaccesible.html</option>
+            <option value="ejemplo_malo.html">ejemplo_malo.html</option>
+            <option value="ejemplo_bueno.html">ejemplo_bueno.html</option>
+            <option value="ejemplo_accesible.html">ejemplo_accesible.html</option>
+            <option value="ejemplo.html">ejemplo.html</option>
+          </select>
+        </label>
+        <button id="btnLoadCompare" class="btn primary">Cargar</button>
+      </div>
+      <div class="compare">
+        <iframe id="frameLeft" title="Ejemplo izquierdo"></iframe>
+        <iframe id="frameRight" title="Ejemplo derecho"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pane 4: Ejemplos rápidos -->
+  <section id="pane-examples" class="pane" role="tabpanel" aria-labelledby="tab-examples">
+    <div class="card">
+      <h2>Carga rápida al editor</h2>
+      <p class="muted">Carga ejemplos predefinidos directamente en el editor del panel de "Chequeos básicos".</p>
+      <div class="row wrap">
+        <button class="btn" data-load="malo">Cargar ejemplo ⛔</button>
+        <button class="btn" data-load="bueno">Cargar ejemplo ✅</button>
+        <button class="btn" data-load="form">Cargar formulario con errores</button>
+        <button class="btn" data-load="menu">Cargar menú interactivo</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="app-footer" role="contentinfo">
+  <small class="muted">Este laboratorio ofrece comprobaciones heurísticas y generación de prompts. Verifica siempre con herramientas especializadas y pruebas manuales.</small>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Ejemplo Bueno</title></head>
+<body>
+  <header>
+    <h1>Mi sitio</h1>
+    <p>Bienvenidos a un ejemplo con buenas prácticas.</p>
+  </header>
+
+  <nav aria-label="Principal">
+    <ul>
+      <li><a href="#contenido">Ir al contenido</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main id="contenido">
+    <button type="button" class="btn" onclick="alert('hola')">Abrir</button>
+
+    <figure>
+      <img src="foto.jpg" alt="Persona navegando una web con alto contraste">
+      <figcaption>Ejemplo de imagen con texto alternativo.</figcaption>
+    </figure>
+
+    <form aria-describedby="help">
+      <p id="help">Campos marcados con * son obligatorios.</p>
+      <div>
+        <label for="nombre">Nombre *</label>
+        <input id="nombre" required>
+      </div>
+      <div>
+        <label for="email">Email *</label>
+        <input id="email" type="email" required aria-describedby="help-email">
+        <small id="help-email">Formato: usuario@dominio.com</small>
+      </div>
+      <button type="submit" class="btn">Enviar</button>
+    </form>
+
+    <section aria-labelledby="accesibilidad">
+      <h2 id="accesibilidad">Buenas prácticas</h2>
+      <ul>
+        <li>HTML semántico</li>
+        <li>Foco visible</li>
+        <li>Contraste AA</li>
+        <li>ALT en imágenes</li>
+      </ul>
+    </section>
+
+    <iframe src="https://example.com" title="Sitio de ejemplo"></iframe>
+
+    <video controls>
+      <source src="video.mp4" type="video/mp4">
+      <track kind="subtitles" srclang="es" label="Español" src="subtitulos.vtt">
+    </video>
+  </main>
+
+  <footer id="contacto">
+    <p>Contacto: ejemplo@dominio.com</p>
+  </footer>
+</body>
+</html>

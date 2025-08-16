@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Bueno</title>
+<style>
+:root{--ink:#111;--bg:#fff}
+body{font-family:system-ui;margin:0;color:var(--ink);background:var(--bg)}
+a:focus, button:focus, input:focus{outline:3px solid #111; outline-offset:2px}
+</style>
+</head>
+<body>
+  <header><h1>Mi web</h1></header>
+  <main>
+    <section>
+      <h2>Sección</h2>
+      <img src="foto.jpg" alt="Retrato de usuario en primer plano">
+      <p>Conoce más sobre nuestro trabajo.</p>
+      <a href="/guia.pdf">Descargar guía en PDF</a>
+    </section>
+    <section>
+      <h2>Formulario de contacto</h2>
+      <form aria-describedby="ayuda">
+        <p id="ayuda">Los campos marcados con * son obligatorios.</p>
+        <div>
+          <label for="nombre">Nombre *</label>
+          <input id="nombre" name="nombre" required>
+        </div>
+        <div>
+          <label for="email">Email *</label>
+          <input id="email" name="email" type="email" required aria-required="true">
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+    <section>
+      <h2>Vídeo de presentación</h2>
+      <video controls>
+        <source src="video.mp4" type="video/mp4">
+        <track kind="subtitles" srclang="es" label="Español" src="subtitulos.vtt">
+      </video>
+    </section>
+    <iframe src="https://example.com" title="Sitio externo de ejemplo"></iframe>
+  </main>
+  <footer>© 2025</footer>
+</body>
+</html>

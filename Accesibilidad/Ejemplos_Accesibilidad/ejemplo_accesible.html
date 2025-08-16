@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Sitio Web Accesible</title>
+    <link rel="stylesheet" href="styles/styles_ejemplo.css">
+</head>
+<body>
+    <!-- Enlace de salto para navegación por teclado -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <!-- Encabezado con estructura semántica correcta -->
+    <header class="header" role="banner">
+        <h1>Mi Sitio Web Accesible</h1>
+        <h2>Ejemplo de implementación conforme a WCAG 2.1 AA</h2>
+    </header>
+    
+    <!-- Navegación principal -->
+    <nav role="navigation" aria-label="Navegación principal">
+        <ul>
+            <li><a href="#contenido">Contenido</a></li>
+            <li><a href="#formulario">Formulario</a></li>
+            <li><a href="#multimedia">Multimedia</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Contenido principal -->
+    <main id="main-content" role="main">
+        <section id="contenido" class="content-section">
+            <h3>Sección de Contenido</h3>
+            <p>Este es un ejemplo de contenido accesible que cumple con los estándares WCAG 2.1 nivel AA.</p>
+            
+            <!-- Imagen con texto alternativo descriptivo -->
+            <div class="image-container">
+                <img src="image.png" 
+                     alt="Fotografía de un paisaje natural con montañas y un lago cristalino al atardecer" 
+                     width="400" 
+                     height="300">
+            </div>
+            
+            <!-- Enlace con texto descriptivo -->
+            <p><a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/es" 
+                  aria-label="Más información sobre accesibilidad web (se abre en nueva ventana)">
+                Introducción a la accesibilidad Web
+            </a></p>
+            
+            <!-- Botón accesible -->
+            <button type="button" 
+                    class="button" 
+                    onclick="mostrarMensaje()" 
+                    aria-describedby="boton-descripcion">
+                Mostrar Mensaje
+            </button>
+            <div id="boton-descripcion" class="sr-only">
+                Este botón muestra un mensaje de bienvenida
+            </div>
+        </section>
+        
+        <!-- Formulario accesible -->
+        <section id="formulario" class="content-section">
+            <h3>Formulario de Contacto</h3>
+            <form action="#" method="post" novalidate>
+                <div class="form-group">
+                    <label for="nombre">
+                        Nombre completo <span class="required" aria-label="campo obligatorio">*</span>
+                    </label>
+                    <input type="text" 
+                           id="nombre" 
+                           name="nombre" 
+                           required 
+                           aria-required="true"
+                           aria-describedby="nombre-error"
+                           aria-invalid="false">
+                    <div id="nombre-error" class="error-message" role="alert"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">
+                        Correo electrónico <span class="required" aria-label="campo obligatorio">*</span>
+                    </label>
+                    <input type="email" 
+                           id="email" 
+                           name="email" 
+                           required 
+                           aria-required="true"
+                           aria-describedby="email-error"
+                           aria-invalid="false">
+                    <div id="email-error" class="error-message" role="alert"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" 
+                              name="mensaje" 
+                              rows="4" 
+                              cols="50"
+                              aria-describedby="mensaje-help"></textarea>
+                    <div id="mensaje-help">Máximo 500 caracteres</div>
+                </div>
+                
+                <button type="submit" class="button">Enviar Formulario</button>
+            </form>
+        </section>
+        
+        <!-- Sección multimedia -->
+        <section id="multimedia" class="content-section">
+            <h3>Contenido Multimedia</h3>
+            
+            <!-- iframe con título descriptivo -->
+            <div class="iframe-container">
+                <h4>Contenido Externo</h4>
+                <iframe src="whatsnew.html" 
+                        title="Ejemplo de contenido externo - sitio web de ejemplo"
+                        width="100%" 
+                        height="300"
+                        aria-label="Contenido externo de whatsnew">
+                    <p>Su navegador no soporta iframes. 
+                       <a href="whatsnew.html">Visitar el sitio web de ejemplo</a>
+                    </p>
+                </iframe>
+            </div>
+            
+            <!-- Video con controles y subtítulos -->
+            <div class="video-container">
+                <h4>Video de Ejemplo</h4>
+                <video controls 
+                       preload="metadata"
+                       aria-describedby="video-descripcion">
+                    <source src="video.mp4" type="video/mp4">
+                    <track kind="subtitles" 
+                           src="subtitulos.vtt" 
+                           srclang="es" 
+                           label="Español">
+                    <p>Su navegador no soporta el elemento video. 
+                       <a href="video.mp4">Descargar el video</a>
+                    </p>
+                </video>
+                <div id="video-descripcion">
+                    Este video muestra un tutorial sobre accesibilidad web
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Pie de página -->
+    <footer role="contentinfo">
+        <p>&copy; 2024 Mi Sitio Web Accesible. Todos los derechos reservados.</p>
+        <p><a href="politica-accesibilidad.html">Política de Accesibilidad</a></p>
+    </footer>
+    
+    <!-- Clase para contenido solo para lectores de pantalla -->
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+    
+    <!-- JavaScript accesible -->
+    <script src="scripts/script_ejemplo.js"></script>    
+</body>
+</html>

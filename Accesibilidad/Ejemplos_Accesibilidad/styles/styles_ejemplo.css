@@ -1,0 +1,165 @@
+ /* Estilos con contraste adecuado (mínimo 4.5:1 para texto normal) */
+ body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333333;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 20px;
+}
+
+.header {
+    background-color: #2c3e50;
+    color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.header h2 {
+    margin: 10px 0 0 0;
+    font-size: 1.5em;
+    font-weight: normal;
+}
+
+.content-section {
+    margin-bottom: 30px;
+}
+
+.content-section h3 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+.image-container {
+    margin: 20px 0;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+}
+
+.button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px 5px;
+}
+
+.button:hover {
+    background-color: #2980b9;
+}
+
+.button:focus {
+    outline: 3px solid #f39c12;
+    outline-offset: 2px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group input:focus {
+    outline: 3px solid #3498db;
+    border-color: #3498db;
+}
+
+.form-group input[aria-invalid="true"] {
+    border-color: #e74c3c;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.required {
+    color: #e74c3c;
+}
+
+.iframe-container {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+}
+
+.video-container {
+    margin: 20px 0;
+    position: relative;
+}
+
+.video-container video {
+    max-width: 100%;
+    height: auto;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #2c3e50;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Clase para contenido solo para lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Asegurar que el texto sea legible */
+p, li {
+    color: #333333;
+    background-color: #ffffff;
+}
+
+/* Enlaces con contraste adecuado */
+a {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+a:hover, a:focus {
+    color: #1f5f8b;
+    text-decoration: none;
+}
