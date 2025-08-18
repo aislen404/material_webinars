@@ -1,4 +1,4 @@
-# 📄 Plantilla PRD Híbrida (Producto + Prompt/IA)
+# 📄 Plantilla PRD
 
 > **Propósito**: Documento vivo para definir, validar y evolucionar un producto o prompt basado en IA.  
 > **Formato**: Markdown versionado en Git (controlado en PRs para trazabilidad).  
